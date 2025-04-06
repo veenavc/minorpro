@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Application</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <h2>CRUD Application</h2>
+    <input type="text" id="name" placeholder="Enter name">
+    <button onclick="createRecord()">Add</button>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+    </table>
+
+    <script>
+         data = [];
+
+        function createRecord() {
+            let name = document.getElementById("name").value;
+            if (name) {
+                data.push(name);
+                document.getElementById("name").value = "";
+                renderTable();
+            }
+        }
+
+        function readRecords() {
+            return data;
+        }
+
+        function updateRecord(index) {
+            let newName = prompt("Update name:", data[index]);
+            if (newName) {
+                data[index] = newName;
+                renderTable();
+            }
+        }
+
+        function deleteRecord(index) {
+            data.splice(index, 1);
+            renderTable();
+        }
+
+        function renderTable() {
+            let tableBody = document.getElementById("table-body");
+            tableBody.innerHTML = "";
+            data.forEach((name, index) => {
+                tableBody.innerHTML += `<tr>
+                    <td>${name}</td>
+                    <td>
+                        <button onclick="updateRecord(${index})">Edit</button>
+                        <button onclick="deleteRecord(${index})">Delete</button>
+                    </td>
+                </tr>`;
+            });
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Application</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <h2>CRUD Application</h2>
+    <input type="text" id="name" placeholder="Enter name">
+    <button onclick="createRecord()">Add</button>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+    </table>
+
+    <script>
+        let data = [];
+
+        function createRecord() {
+            let name = document.getElementById("name").value;
+            if (name) {
+                data.push(name);
+                document.getElementById("name").value = "";
+                renderTable();
+            }
+        }
+
+        function readRecords() {
+            return data;
+        }
+
+        function updateRecord(index) {
+            let newName = prompt("Update name:", data[index]);
+            if (newName) {
+                data[index] = newName;
+                renderTable();
+            }
+        }
+
+        function deleteRecord(index) {
+            data.splice(index, 1);
+            renderTable();
+        }
+
+        function renderTable() {
+            let tableBody = document.getElementById("table-body");
+            tableBody.innerHTML = "";
+            data.forEach((name, index) => {
+                tableBody.innerHTML += `<tr>
+                    <td>${name}</td>
+                    <td>
+                        <button onclick="updateRecord(${index})">Edit</button>
+                        <button onclick="deleteRecord(${index})">Delete</button>
+                    </td>
+                </tr>`;
+            });
+        }
+    </script>
+</body>
+</html>
